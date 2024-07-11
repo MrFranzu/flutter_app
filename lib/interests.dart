@@ -15,8 +15,8 @@ class Interests extends StatelessWidget {
             style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
           ),
           SizedBox(height: 10),
-          Text('Specifications of Smartphones'),
-          Text('Front-end Development'),
+          Text('- Specifications of Smartphones'),
+          Text('- Front-end Development'),
           
           SizedBox(height: 20),
           Text(
@@ -24,8 +24,8 @@ class Interests extends StatelessWidget {
             style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
           ),
           SizedBox(height: 10),
-          Text('Simple website about myself'),
-          Text('Filesystem using Java OOP'),
+          Text('- Simple website about myself'),
+          Text('- Filesystem using Java OOP'),
       
         ],
       ),
