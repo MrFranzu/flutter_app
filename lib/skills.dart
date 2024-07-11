@@ -14,9 +14,9 @@ class Skills extends StatelessWidget {
             style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
           ),
           SizedBox(height: 10),
-          Text('Video Editing'),
-          Text('Excel data FIltering'),
-          Text('SQL'),
+          Text('- Video Editing'),
+          Text('- Excel data FIltering'),
+          Text('- SQL'),
       
           SizedBox(height: 20),
           Text(
@@ -24,9 +24,9 @@ class Skills extends StatelessWidget {
             style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
           ),
           SizedBox(height: 10),
-          Text('Willing to learn'),
-          Text('Adaptive'),
-          Text('Time management'),
+          Text('- Willing to learn'),
+          Text('- Adaptive'),
+          Text('- Time management'),
         ],
       ),
     );
