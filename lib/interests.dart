@@ -5,28 +5,49 @@ class Interests extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.all(16.0),
+    final theme = Theme.of(context);
+    final textColor = theme.textTheme.bodyLarge?.color;
+
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
+          const Text(
             'Professional Interests:',
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.blueAccent),
           ),
-          SizedBox(height: 10),
-          Text('- Specifications of Smartphones'),
-          Text('- Front-end Development'),
-          
-          SizedBox(height: 20),
-          Text(
+          const SizedBox(height: 10),
+          _buildInterestItem(context, 'Specifications of Smartphones', Icons.phone_android),
+          _buildInterestItem(context, 'Front-end Development', Icons.web),
+
+          const SizedBox(height: 20),
+          const Text(
             'Notable Projects or Publications:',
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.blueAccent),
           ),
-          SizedBox(height: 10),
-          Text('- Simple website about myself'),
-          Text('- Filesystem using Java OOP'),
-      
+          const SizedBox(height: 10),
+          _buildInterestItem(context, 'Simple website about myself', Icons.web_asset),
+          _buildInterestItem(context, 'Filesystem using Java OOP', Icons.code),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildInterestItem(BuildContext context, String interest, IconData icon) {
+    final theme = Theme.of(context);
+    final textColor = theme.textTheme.bodyLarge?.color;
+
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 5.0),
+      child: Row(
+        children: [
+          Icon(icon, color: theme.colorScheme.primary),
+          const SizedBox(width: 10),
+          Text(
+            interest,
+            style: TextStyle(fontSize: 18, color: textColor),
+          ),
         ],
       ),
     );
