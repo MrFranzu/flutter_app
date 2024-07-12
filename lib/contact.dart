@@ -5,47 +5,42 @@ class Contact extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.all(16.0),
+    final theme = Theme.of(context);
+    final textColor = theme.textTheme.bodyLarge?.color;
+
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          ListTile(
-            leading: Icon(Icons.email),
-            title: Text(
-              'amielfranzb@gmail.com',
-              style: TextStyle(fontSize: 16),
-            ),
-          ),
-          ListTile(
-            leading: Icon(Icons.phone),
-            title: Text(
-              '0919-931-3418',
-              style: TextStyle(fontSize: 16),
-            ),
-          ),
-          ListTile(
-            leading: Icon(Icons.facebook), // Use Icons.facebook
-            title: Text(
-              'https://www.facebook.com/amielfranz.bagui',
-              style: TextStyle(fontSize: 16),
-            ),
-          ),
-          ListTile(
-            leading: Icon(Icons.camera), // Use Icons.camera for Instagram
-            title: Text(
-              'https://www.instagram.com/franz.rodriguez31',
-              style: TextStyle(fontSize: 16),
-            ),
-          ),
-          ListTile(
-            leading: Icon(Icons.code), // Use Icons.code for GitHub
-            title: Text(
-              'https://github.com/MrFranzu',
-              style: TextStyle(fontSize: 16),
-            ),
-          ),
+          _buildContactItem(context, Icons.email, 'amielfranzb@gmail.com'),
+          _buildContactItem(context, Icons.phone, '0919-931-3418'),
+          _buildContactItem(context, Icons.facebook, 'https://www.facebook.com/amielfranz.bagui'),
+          _buildContactItem(context, Icons.camera, 'https://www.instagram.com/franz.rodriguez31'),
+          _buildContactItem(context, Icons.code, 'https://github.com/MrFranzu'),
         ],
+      ),
+    );
+  }
+
+  Widget _buildContactItem(BuildContext context, IconData icon, String contactInfo) {
+    final theme = Theme.of(context);
+    final textColor = theme.textTheme.bodyLarge?.color;
+
+    return Card(
+      elevation: 4,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(15),
+      ),
+      child: ListTile(
+        leading: Icon(icon, color: theme.colorScheme.primary),
+        title: Text(
+          contactInfo,
+          style: TextStyle(
+            fontSize: 18,
+            color: textColor,
+          ),
+        ),
       ),
     );
   }
