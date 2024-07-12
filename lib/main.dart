@@ -9,32 +9,46 @@ void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
+
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  bool _isDarkMode = true;
+
+  void _toggleTheme() {
+    setState(() {
+      _isDarkMode = !_isDarkMode;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'My Profile',
-      theme: ThemeData.dark().copyWith(
-        primaryColor: Colors.blue,
-        hintColor: Colors.blueAccent,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
+      debugShowCheckedModeBanner: false, // Remove the debug banner
+      theme: _isDarkMode ? ThemeData.dark() : ThemeData.light(),
+      home: MyHomePage(
+        isDarkMode: _isDarkMode,
+        toggleTheme: _toggleTheme,
       ),
-      home: const MyHomePage(),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key}) : super(key: key);
+  final bool isDarkMode;
+  final Function toggleTheme;
+
+  const MyHomePage({Key? key, required this.isDarkMode, required this.toggleTheme}) : super(key: key);
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage>
-    with SingleTickerProviderStateMixin {
+class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateMixin {
   late TabController _tabController;
 
   @override
@@ -53,7 +67,12 @@ class _MyHomePageState extends State<MyHomePage>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('My Profile'),
+        actions: [
+          IconButton(
+            icon: Icon(widget.isDarkMode ? Icons.brightness_7 : Icons.brightness_2),
+            onPressed: () => widget.toggleTheme(),
+          ),
+        ],
         bottom: TabBar(
           controller: _tabController,
           tabs: const [
