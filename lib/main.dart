@@ -28,7 +28,8 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false, // Remove the debug banner
+      title: 'ProfileApp', 
+      debugShowCheckedModeBanner: false, 
       theme: _isDarkMode ? ThemeData.dark() : ThemeData.light(),
       home: MyHomePage(
         isDarkMode: _isDarkMode,
@@ -67,19 +68,22 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        actions: [
-          IconButton(
-            icon: Icon(widget.isDarkMode ? Icons.brightness_7 : Icons.brightness_2),
-            onPressed: () => widget.toggleTheme(),
-          ),
-        ],
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            IconButton(
+              icon: Icon(widget.isDarkMode ? Icons.brightness_7 : Icons.brightness_2),
+              onPressed: () => widget.toggleTheme(),
+            ),
+          ],
+        ),
         bottom: TabBar(
           controller: _tabController,
           tabs: const [
             Tab(icon: Icon(Icons.person), text: 'Personal Info'),
             Tab(icon: Icon(Icons.school), text: 'Education'),
             Tab(icon: Icon(Icons.code), text: 'Skills'),
-            Tab(icon: Icon(Icons.interests), text: 'Interests'),
+            Tab(icon: Icon(Icons.star), text: 'Interests'), 
             Tab(icon: Icon(Icons.contact_mail), text: 'Contact'),
           ],
         ),
